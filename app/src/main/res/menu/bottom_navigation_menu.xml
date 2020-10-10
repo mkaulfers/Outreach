@@ -1,0 +1,30 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/all_page"
+        android:enabled="true"
+        android:icon="@drawable/all"
+        android:title="@string/all"/>
+    <item
+        android:id="@+id/music_page"
+        android:enabled="true"
+        android:icon="@drawable/music"
+        android:title="@string/music"/>
+
+    <item
+        android:id="@+id/religious_page"
+        android:enabled="true"
+        android:icon="@drawable/praying"
+        android:title="@string/religious"/>
+
+    <item
+        android:id="@+id/community_page"
+        android:enabled="true"
+        android:icon="@drawable/love"
+        android:title="@string/community"/>
+
+    <item
+        android:id="@+id/favorite_page"
+        android:enabled="true"
+        android:icon="@drawable/heart"
+        android:title="@string/favorite"/>
+</menu>
