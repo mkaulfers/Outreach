@@ -5,6 +5,11 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:actionOverflowButtonStyle">@style/CustomOverflow</item>
+    </style>
+
+    <style name="CustomOverflow">
+        <item name="android:src">@drawable/more</item>
     </style>
 
 </resources>
