@@ -18,7 +18,7 @@ import java.util.Objects;
 import java.util.zip.Inflater;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
-    BottomNavigationView bottomNavigationView;
+    public static BottomNavigationView bottomNavigationView;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -40,7 +40,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorMenuBars)));
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
-//        bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        bottomNavigationView.setOnNavigationItemSelectedListener(this);
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragmentFrame, EventViewFragment.newInstance())
+                .commit();
     }
 
     @Override
