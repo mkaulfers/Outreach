@@ -11,4 +11,5 @@
     <string name="some_event_title">Some Event Title</string>
     <string name="_01_01_2021_12_00pm_cst">01/01/2021 | 12:00pm CST</string>
     <string name="free">Free</string>
+    <string name="sorry_no_events_found_nearby">Sorry, no events found nearby.</string>
 </resources>
