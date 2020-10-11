@@ -7,4 +7,6 @@
 <!--Menu Colors-->
     <color name="colorMenuBars">#0060C1</color>
     <color name="colorMenuItems">#FFFFFF</color>
+
+    <color name="costColor">#31A500</color>
 </resources>
