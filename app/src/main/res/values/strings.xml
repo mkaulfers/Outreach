@@ -21,4 +21,11 @@
     <string name="time">Time</string>
     <string name="address">Address</string>
     <string name="cost">Cost</string>
+    <string name="distance">Distance</string>
+    <string name="_5mi">5mi.</string>
+    <string name="_500mi">500mi.</string>
+    <string name="placeholder_date">January 1, 2020 - December 1, 2021</string>
+    <string name="cloud_saving">Cloud Saving</string>
+    <string name="search_settings">Search Settings</string>
+    <string name="date_range">Date Range</string>
 </resources>
