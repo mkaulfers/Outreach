@@ -17,7 +17,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/register_background" />
+        app:srcCompat="@drawable/register_background"
+        android:contentDescription="@string/background" />
 
     <TextView
         android:id="@+id/textView11"
@@ -51,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/gotham_rounded_bold"
-        android:text="Confirm Password"
+        android:text="@string/confirm_password"
         android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="@+id/editTextTextPassword"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
@@ -67,7 +68,9 @@
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textView11"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+        app:layout_constraintTop_toBottomOf="@+id/textView11"
+        android:autofillHints="@string/email"
+        tools:ignore="LabelFor" />
 
     <EditText
         android:id="@+id/editTextTextPassword"
@@ -79,7 +82,9 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="@+id/editTextTextEmailAddress"
         app:layout_constraintStart_toStartOf="@+id/textView12"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+        app:layout_constraintTop_toBottomOf="@+id/textView12"
+        android:autofillHints="@string/password"
+        tools:ignore="LabelFor" />
 
     <EditText
         android:id="@+id/editTextTextPassword2"
@@ -91,7 +96,9 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword"
         app:layout_constraintStart_toStartOf="@+id/textView13"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+        app:layout_constraintTop_toBottomOf="@+id/textView13"
+        android:autofillHints="@string/password"
+        tools:ignore="LabelFor" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline6"
@@ -110,6 +117,7 @@
         app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword2"
         app:layout_constraintStart_toStartOf="@+id/editTextTextPassword2"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword2"
-        app:srcCompat="@drawable/register_button" />
+        app:srcCompat="@drawable/register_button"
+        android:contentDescription="@string/register" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
