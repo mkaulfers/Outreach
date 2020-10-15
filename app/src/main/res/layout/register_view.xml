@@ -19,7 +19,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        tools:srcCompat="@tools:sample/backgrounds/scenic"
+        android:contentDescription="@string/event_image" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -35,7 +36,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:text="TextView"
+        android:text="@string/title"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline" />
@@ -55,7 +56,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:gravity="end"
-        android:text="TextView"
+        android:text="@string/time"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toTopOf="@+id/guideline" />
@@ -65,7 +66,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:text="TextView"
+        android:text="@string/address"
         app:layout_constraintBottom_toBottomOf="@+id/favorite_button"
         app:layout_constraintEnd_toStartOf="@+id/favorite_button"
         app:layout_constraintHorizontal_bias="0.0"
@@ -94,7 +95,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="8dp"
-        android:text="TextView"
+        android:text="@string/cost"
         app:layout_constraintBottom_toBottomOf="@+id/favorite_button"
         app:layout_constraintEnd_toStartOf="@+id/favorite_button"
         app:layout_constraintStart_toStartOf="parent"
@@ -134,7 +135,9 @@
                 android:layout_gravity="start|top"
                 android:ems="10"
                 android:gravity="start|top"
-                android:inputType="textMultiLine" />
+                android:inputType="textMultiLine"
+                android:autofillHints="@string/event_details"
+                tools:ignore="LabelFor" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
