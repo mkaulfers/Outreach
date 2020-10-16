@@ -18,7 +18,10 @@
 
         <activity android:name=".SettingsActivity"
             android:parentActivityName=".MainActivity" />
-        
+
+        <activity android:name=".ProfileActivity"
+            android:parentActivityName=".MainActivity" />
+
     </application>
 
 </manifest>
