@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import com.example.outreach.fragments.EventViewFragment;
+import com.example.outreach.utilities.APIDataHandler;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.Objects;
 
@@ -56,6 +57,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 .beginTransaction()
                 .replace(R.id.fragmentFrame, EventViewFragment.newInstance())
                 .commit();
+
+        APIDataHandler.parseJSON(this);
     }
 
     @Override
