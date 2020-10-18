@@ -6,6 +6,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.outreach.AdapterInterface;
+import com.example.outreach.MainActivity;
+import com.example.outreach.fragments.EventViewFragment;
 import com.example.outreach.models.Event;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -17,7 +20,8 @@ public class APIDataHandler {
     private static final String MOCK_API_REQUEST = "https://api.mocki.io/v1/81ac7720";
     public static ArrayList<Event> allEvents = new ArrayList<>();
 
-    public static void parseJSON(Context context) {
+    public static void parseJSON(final Context context) {
+        allEvents.clear();
         RequestQueue mQueue = Volley.newRequestQueue(context);
 
         final JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, MOCK_API_REQUEST, null,
@@ -43,6 +47,8 @@ public class APIDataHandler {
 
                                 allEvents.add(new Event(id, latitude, cost, date, longitude, time, title, address, category, coverURL, description));
                             }
+
+                            EventViewFragment.adapterInterface.setAdapter(allEvents);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
