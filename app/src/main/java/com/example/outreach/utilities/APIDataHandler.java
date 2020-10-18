@@ -1,7 +1,5 @@
 package com.example.outreach.utilities;
-
 import android.content.Context;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -9,17 +7,15 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.outreach.models.Event;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 
 public class APIDataHandler {
     ///FINGERPRINT SHA1 - BC:84:86:68:BE:1F:4B:15:AF:A0:A1:E1:1E:5B:B9:BD:AD:7C:B7:51
     private static final String MOCK_API_REQUEST = "https://api.mocki.io/v1/81ac7720";
-    private static ArrayList<Event> allEvents = new ArrayList<>();
+    public static ArrayList<Event> allEvents = new ArrayList<>();
 
     public static void parseJSON(Context context) {
         RequestQueue mQueue = Volley.newRequestQueue(context);
