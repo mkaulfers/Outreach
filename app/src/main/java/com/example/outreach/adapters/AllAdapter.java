@@ -57,7 +57,15 @@ public class AllAdapter extends BaseAdapter {
         dateTimeLabel.setText(formattedString);
 
         TextView costLabel = convertView.findViewById(R.id.costLabel);
-        costLabel.setText(String.valueOf(allEvents.get(position).getCost()));
+
+        if (allEvents.get(position).getCost() > 0) {
+            String cost = "$" + allEvents.get(position).getCost() + "0";
+            costLabel.setText(cost);
+        } else {
+            costLabel.setText(R.string.free);
+        }
+
+
 
         return convertView;
     }
