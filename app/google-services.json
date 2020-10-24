@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "167124878312",
+    "firebase_url": "https://outreach-8b8f5.firebaseio.com",
+    "project_id": "outreach-8b8f5",
+    "storage_bucket": "outreach-8b8f5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:167124878312:android:5680a694d39e37e79fda5d",
+        "android_client_info": {
+          "package_name": "com.example.outreach"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "167124878312-e2qdq5ovqauv28174gu3fdqhjb2dj3oe.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.outreach",
+            "certificate_hash": "bc848668be1f4b15afa0a1e11e5bb9bdad7cb751"
+          }
+        },
+        {
+          "client_id": "167124878312-sc3q5phvgl9sobhkd6qgcbvvuovd1li7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVAGx_vLXSl_8qw-KK5j_byPYi-MrpaUc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "167124878312-sc3q5phvgl9sobhkd6qgcbvvuovd1li7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
