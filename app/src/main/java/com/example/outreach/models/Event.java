@@ -3,17 +3,17 @@ package com.example.outreach.models;
 import java.io.Serializable;
 
 public class Event implements Serializable {
-    private int id;
-    private double latitude;
-    private double cost;
-    private String date;
-    private double longitude;
-    private String time;
-    private String title;
-    private String address;
-    private String category;
-    private String coverURL;
-    private String description;
+    private final int id;
+    private final double latitude;
+    private final double cost;
+    private final String date;
+    private final double longitude;
+    private final String time;
+    private final String title;
+    private final String address;
+    private final String category;
+    private final String coverURL;
+    private final String description;
 
     public Event(int id, double latitude, double cost, String date, double longitude, String time,
                  String title, String address, String category, String coverURL, String description) {
@@ -34,20 +34,12 @@ public class Event implements Serializable {
         return id;
     }
 
-    public double getLatitude() {
-        return latitude;
-    }
-
     public double getCost() {
         return cost;
     }
 
     public String getDate() {
         return date;
-    }
-
-    public double getLongitude() {
-        return longitude;
     }
 
     public String getTitle() {

@@ -5,20 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.example.outreach.fragments.DetailViewFragment;
 import com.example.outreach.fragments.EventViewFragment;
 import com.example.outreach.models.Event;
 import com.example.outreach.utilities.APIDataHandler;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -32,13 +29,10 @@ import com.google.firebase.storage.StorageReference;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.Writer;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
@@ -181,6 +175,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                                                 InputStream fis = new FileInputStream(finalLocalFile);
                                                 int size = fis.available();
                                                 byte[] buffer = new byte[size];
+                                                //noinspection ResultOfMethodCallIgnored
                                                 fis.read(buffer);
                                                 fis.close();
                                                 String json = new String(buffer, StandardCharsets.UTF_8);

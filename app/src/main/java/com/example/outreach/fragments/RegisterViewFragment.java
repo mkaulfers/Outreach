@@ -1,6 +1,5 @@
 package com.example.outreach.fragments;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -30,8 +29,7 @@ public class RegisterViewFragment extends Fragment implements View.OnClickListen
     ProgressBar mProgressBar;
 
     public static RegisterViewFragment newInstance() {
-        RegisterViewFragment fragment = new RegisterViewFragment();
-        return fragment;
+        return new RegisterViewFragment();
     }
 
     @Override

@@ -1,11 +1,9 @@
 package com.example.outreach.fragments;
-import android.content.BroadcastReceiver;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,7 +15,6 @@ import com.example.outreach.R;
 import com.example.outreach.adapters.AllAdapter;
 import com.example.outreach.models.Event;
 import com.example.outreach.utilities.APIDataHandler;
-import com.google.android.gms.common.api.Api;
 
 import java.util.ArrayList;
 import java.util.Objects;

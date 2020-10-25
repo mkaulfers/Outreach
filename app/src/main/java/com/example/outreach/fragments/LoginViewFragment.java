@@ -30,8 +30,7 @@ public class LoginViewFragment extends Fragment implements ImageButton.OnClickLi
     FirebaseAuth mAuth;
 
     public static LoginViewFragment newInstance() {
-        LoginViewFragment fragment = new LoginViewFragment();
-        return fragment;
+        return new LoginViewFragment();
     }
 
     @Override

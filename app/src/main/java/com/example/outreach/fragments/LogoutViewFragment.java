@@ -9,11 +9,9 @@ import android.widget.ImageButton;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
 import com.example.outreach.R;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Objects;
 
@@ -21,8 +19,7 @@ public class LogoutViewFragment extends Fragment implements ImageButton.OnClickL
     ImageButton mLogoutButton;
 
     public static LogoutViewFragment newInstance() {
-        LogoutViewFragment fragment = new LogoutViewFragment();
-        return fragment;
+        return new LogoutViewFragment();
     }
 
     @Override

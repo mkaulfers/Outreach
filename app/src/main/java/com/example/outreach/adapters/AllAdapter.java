@@ -12,12 +12,11 @@ import com.example.outreach.R;
 import com.example.outreach.models.Event;
 import com.squareup.picasso.Picasso;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class AllAdapter extends BaseAdapter {
-    private ArrayList<Event> allEvents;
-    private Context context;
+    private final ArrayList<Event> allEvents;
+    private final Context context;
 
     public AllAdapter(ArrayList<Event> allEvents, Context context) {
         this.allEvents = allEvents;
