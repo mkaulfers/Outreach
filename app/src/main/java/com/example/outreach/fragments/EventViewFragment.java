@@ -17,6 +17,7 @@ import com.example.outreach.R;
 import com.example.outreach.adapters.AllAdapter;
 import com.example.outreach.models.Event;
 import com.example.outreach.utilities.APIDataHandler;
+import com.google.android.gms.common.api.Api;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -65,6 +66,9 @@ public class EventViewFragment extends Fragment implements AdapterInterface, Lis
             case R.id.community_page:
                 setAdapter(MainActivity.getCommunityEvents());
                 break;
+            case R.id.favorite_page:
+                setAdapter(MainActivity.getFavoritedEvents());
+                break;
         }
     }
 
@@ -75,10 +79,32 @@ public class EventViewFragment extends Fragment implements AdapterInterface, Lis
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Objects.requireNonNull(getActivity()).getSupportFragmentManager()
-                .beginTransaction()
-                .addToBackStack("")
-                .replace(R.id.fragmentFrame, DetailViewFragment.newInstance(APIDataHandler.allEvents.get(position)))
-                .commit();
+        ArrayList<Event> filteredEvents = new ArrayList<>();
+
+        switch (MainActivity.bottomNavigationView.getSelectedItemId()) {
+            case R.id.all_page:
+                filteredEvents = APIDataHandler.allEvents;
+                break;
+            case R.id.music_page:
+                filteredEvents = MainActivity.getMusicEvents();
+                break;
+            case R.id.religious_page:
+                filteredEvents = MainActivity.getReligiousEvents();
+                break;
+            case R.id.community_page:
+                filteredEvents = MainActivity.getCommunityEvents();
+                break;
+            case R.id.favorite_page:
+                filteredEvents = MainActivity.getFavoritedEvents();
+                break;
+        }
+
+        if (MainActivity.bottomNavigationView.getSelectedItemId() != R.id.favorite_page) {
+            Objects.requireNonNull(getActivity()).getSupportFragmentManager()
+                    .beginTransaction()
+                    .addToBackStack("")
+                    .replace(R.id.fragmentFrame, DetailViewFragment.newInstance(filteredEvents.get(position)))
+                    .commit();
+        }
     }
 }

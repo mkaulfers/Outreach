@@ -11,14 +11,37 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.outreach.fragments.DetailViewFragment;
 import com.example.outreach.fragments.EventViewFragment;
 import com.example.outreach.models.Event;
 import com.example.outreach.utilities.APIDataHandler;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.storage.FileDownloadTask;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.ListResult;
+import com.google.firebase.storage.StorageReference;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.Writer;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
@@ -94,6 +117,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 EventViewFragment.adapterInterface.setAdapter(getCommunityEvents());
                 return true;
             case R.id.favorite_page:
+                EventViewFragment.adapterInterface.setAdapter(getFavoritedEvents());
                 return true;
         }
         return false;
@@ -127,5 +151,74 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             }
         }
         return events;
+    }
+
+    public static ArrayList<Event> getFavoritedEvents() {
+        final ArrayList<Event> events = new ArrayList<>();
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("users/" + user.getUid() + "/favorites/");
+            storageReference.list(100)
+                    .addOnSuccessListener(new OnSuccessListener<ListResult>() {
+                        @Override
+                        public void onSuccess(ListResult listResult) {
+                            List<StorageReference> references = listResult.getItems();
+
+                            for (StorageReference reference : references) {
+                                File localFile = null;
+                                try {
+                                    localFile = File.createTempFile("Event", ".json");
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                                final File finalLocalFile = localFile;
+                                assert localFile != null;
+                                reference.getFile(localFile).addOnCompleteListener(new OnCompleteListener<FileDownloadTask.TaskSnapshot>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<FileDownloadTask.TaskSnapshot> task) {
+                                            try {
+                                                InputStream fis = new FileInputStream(finalLocalFile);
+                                                int size = fis.available();
+                                                byte[] buffer = new byte[size];
+                                                fis.read(buffer);
+                                                fis.close();
+                                                String json = new String(buffer, StandardCharsets.UTF_8);
+                                                events.add(parseJSONtoEvent(json));
+                                                EventViewFragment.adapterInterface.setAdapter(events);
+                                            } catch (IOException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                    });
+                            }
+
+                        }
+                    });
+        }
+
+        return events;
+    }
+
+    private static Event parseJSONtoEvent(String json) {
+        Event event = null;
+        try {
+            JSONObject obj = new JSONObject(json);
+            int id = obj.getInt("id");
+            double lat = obj.getDouble("lat");
+            double cost = obj.getDouble("cost");
+            String date = obj.getString("date");
+            double longitude = obj.getDouble("long");
+            String time = obj.getString("time");
+            String title = obj.getString("title");
+            String address = obj.getString("address");
+            String category = obj.getString("category");
+            String coverURL = obj.getString("cover_url");
+            String description = obj.getString("description");
+            event = new Event(id, lat, cost, date, longitude, time, title, address, category, coverURL, description);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return event;
     }
 }

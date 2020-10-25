@@ -31,7 +31,6 @@ public class ProfileActivity extends AppCompatActivity {
                     .beginTransaction()
                     .replace(R.id.fragment_frame, LoginViewFragment.newInstance())
                     .commit();
-            //TODO: Present Create Account
         }
     }
 }
