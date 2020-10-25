@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:fontFamily="@font/gotham_rounded_bold"
         android:text="@string/email"
         android:textColor="#FFFFFF"
@@ -38,7 +38,7 @@
         style="@style/text_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/gotham_rounded_bold"
         android:text="@string/password"
         android:textColor="#FFFFFF"
@@ -50,7 +50,7 @@
         style="@style/text_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/gotham_rounded_bold"
         android:text="@string/confirm_password"
         android:textColor="#FFFFFF"
@@ -112,12 +112,32 @@
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:background="#00FFFFFF"
+        android:contentDescription="@string/register"
         android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintEnd_toEndOf="@+id/confirm_password_input"
         app:layout_constraintStart_toStartOf="@+id/confirm_password_input"
         app:layout_constraintTop_toBottomOf="@+id/confirm_password_input"
-        app:srcCompat="@drawable/register_button"
-        android:contentDescription="@string/register" />
+        app:srcCompat="@drawable/register_button" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.6867305" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline7" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
