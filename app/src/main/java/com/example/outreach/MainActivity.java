@@ -2,6 +2,7 @@ package com.example.outreach;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -11,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.example.outreach.fragments.DetailViewFragment;
 import com.example.outreach.fragments.EventViewFragment;
 import com.example.outreach.models.Event;
 import com.example.outreach.utilities.APIDataHandler;
@@ -69,6 +71,15 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragmentFrame);
+        if (fragment instanceof DetailViewFragment) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragmentFrame, EventViewFragment.newInstance())
+                    .commit();
+            return true;
+        }
+
         switch (item.getItemId()) {
             case R.id.all_page:
                 EventViewFragment.adapterInterface.setAdapter(APIDataHandler.allEvents);
@@ -88,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         return false;
     }
 
-    private ArrayList<Event> getMusicEvents() {
+    public static ArrayList<Event> getMusicEvents() {
         ArrayList<Event> events = new ArrayList<>();
         for (Event event : APIDataHandler.allEvents) {
             if (event.getCategory().equals("music")) {
@@ -98,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         return events;
     }
 
-    private ArrayList<Event> getReligiousEvents() {
+    public static ArrayList<Event> getReligiousEvents() {
         ArrayList<Event> events = new ArrayList<>();
         for (Event event : APIDataHandler.allEvents) {
             if (event.getCategory().equals("religious")) {
@@ -108,7 +119,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         return events;
     }
 
-    private ArrayList<Event> getCommunityEvents() {
+    public static ArrayList<Event> getCommunityEvents() {
         ArrayList<Event> events = new ArrayList<>();
         for (Event event : APIDataHandler.allEvents) {
             if (event.getCategory().equals("volunteer")) {

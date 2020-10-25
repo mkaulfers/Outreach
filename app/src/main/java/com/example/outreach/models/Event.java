@@ -1,6 +1,8 @@
 package com.example.outreach.models;
 
-public class Event {
+import java.io.Serializable;
+
+public class Event implements Serializable {
     private int id;
     private double latitude;
     private double cost;
@@ -70,5 +72,21 @@ public class Event {
 
     public String getDescription() {
         return description;
+    }
+
+    public String getJsonString() {
+        return "{\n" +
+                "  \"id\": " + id + ",\n" +
+                "  \"lat\": " + latitude + ",\n" +
+                "  \"cost\": " + cost + ",\n" +
+                "  \"date\": \"" + date + "\",\n" +
+                "  \"long\": " + longitude + ",\n" +
+                "  \"time\": \"" + time + "\",\n" +
+                "  \"title\": \"" + title + "\",\n" +
+                "  \"address\": \"" + address + "\",\n" +
+                "  \"category\": \"" + category + "\",\n" +
+                "  \"cover_url\": \"" + coverURL + "\",\n" +
+                "  \"description\": \"" + description + "\"\n" +
+                "}";
     }
 }

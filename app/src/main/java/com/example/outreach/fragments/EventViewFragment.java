@@ -19,6 +19,7 @@ import com.example.outreach.models.Event;
 import com.example.outreach.utilities.APIDataHandler;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class EventViewFragment extends Fragment implements AdapterInterface, ListView.OnItemClickListener {
     public static AdapterInterface adapterInterface;
@@ -49,12 +50,35 @@ public class EventViewFragment extends Fragment implements AdapterInterface, Lis
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        switch (MainActivity.bottomNavigationView.getSelectedItemId()) {
+            case R.id.all_page:
+                setAdapter(APIDataHandler.allEvents);
+                break;
+            case R.id.music_page:
+                setAdapter(MainActivity.getMusicEvents());
+                break;
+            case R.id.religious_page:
+                setAdapter(MainActivity.getReligiousEvents());
+                break;
+            case R.id.community_page:
+                setAdapter(MainActivity.getCommunityEvents());
+                break;
+        }
+    }
+
+    @Override
     public void setAdapter(ArrayList<Event> events) {
         listView.setAdapter(new AllAdapter(events, getContext()));
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+        Objects.requireNonNull(getActivity()).getSupportFragmentManager()
+                .beginTransaction()
+                .addToBackStack("")
+                .replace(R.id.fragmentFrame, DetailViewFragment.newInstance(APIDataHandler.allEvents.get(position)))
+                .commit();
     }
 }

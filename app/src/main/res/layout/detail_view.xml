@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/detail_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
@@ -14,13 +15,13 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:contentDescription="@string/event_image"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/backgrounds/scenic"
-        android:contentDescription="@string/event_image" />
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -82,12 +83,12 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:background="#00FFFFFF"
+        android:contentDescription="@string/favorite"
         android:foregroundGravity="center"
         android:scaleType="fitCenter"
         android:src="@drawable/heart_favorite"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/event_time"
-        android:contentDescription="@string/favorite" />
+        app:layout_constraintTop_toBottomOf="@+id/event_time" />
 
     <TextView
         android:id="@+id/event_cost"
@@ -115,11 +116,13 @@
         app:layout_constraintTop_toBottomOf="@+id/event_cost" />
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="0dp"
-        android:layout_height="334dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/divider"
-        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/divider"
         app:layout_constraintTop_toBottomOf="@+id/divider">
 
@@ -133,10 +136,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start|top"
+                android:autofillHints="@string/event_details"
+                android:clickable="false"
                 android:ems="10"
                 android:gravity="start|top"
                 android:inputType="textMultiLine"
-                android:autofillHints="@string/event_details"
                 tools:ignore="LabelFor" />
         </LinearLayout>
     </ScrollView>
